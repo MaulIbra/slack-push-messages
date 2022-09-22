@@ -3,9 +3,11 @@ package main
 import (
 	"github.com/MaulIbra/slack-push-messages/api"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
+	"time"
 )
 
 func main() {
@@ -17,6 +19,20 @@ func main() {
 		}
 	}
 	router := fiber.New()
+
+	router.Use(limiter.New(limiter.Config{
+		Max:        1,
+		Expiration: 10 * time.Second,
+		KeyGenerator: func(c *fiber.Ctx) string {
+			return c.IP()
+		},
+		LimitReached: func(c *fiber.Ctx) error {
+			return c.SendStatus(fiber.StatusTooManyRequests)
+		},
+		SkipFailedRequests:     false,
+		SkipSuccessfulRequests: false,
+	}))
+
 	iPushNotificationUseCase := api.NewPushNotificationUseCase()
 	pushNotificationDelivery := api.PushNotificationDelivery{Router: router, PushNotificationUseCase: iPushNotificationUseCase}
 	pushNotificationDelivery.PushNotificationRoutes()
