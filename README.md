@@ -17,10 +17,7 @@ if you want to running code on your local machine, follow instruction that expla
 Prerequisite : Go was installed in your local machine
 * clone this repository
 * enter to path repository and run **`go mod tidy`**
-* create .env file and put code below
-
-    `SLACK_TOKEN=`\
-`SLACK_CHANNEL_ID=`\
+* create .env file and put code below\
 `PORT=`
 * Running app with command `go run main.go local`
 
