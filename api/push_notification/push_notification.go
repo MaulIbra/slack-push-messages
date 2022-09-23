@@ -1,4 +1,4 @@
-package api
+package push_notification
 
 import "github.com/go-playground/validator/v10"
 

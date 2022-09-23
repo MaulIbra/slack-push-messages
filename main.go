@@ -3,12 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/MaulIbra/slack-push-messages/api"
+	"github.com/MaulIbra/slack-push-messages/api/auth"
+	"github.com/MaulIbra/slack-push-messages/api/push_notification"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/limiter"
+	"github.com/golang-jwt/jwt"
 	"github.com/joho/godotenv"
 	"log"
 	"os"
-	"time"
+	"strconv"
 )
 
 func main() {
@@ -21,25 +23,25 @@ func main() {
 	}
 	router := fiber.New()
 
+	mySigningKey := []byte(os.Getenv("SECRET_KEY"))
+	token := jwt.New(jwt.SigningMethodHS256)
+	expiredToken, _ := strconv.Atoi(os.Getenv("EXPIRED_TIME_TOKEN"))
+
+	api.UseRateLimiter(router)
+
+	iAuthRepo := auth.NewAuthRepository(token, mySigningKey, expiredToken)
+	iAuthUseCase := auth.NewAuthUseCase(iAuthRepo)
+	authDelivery := auth.DeliveryAuth{Router: router, AuthUseCase: iAuthUseCase}
+	authDelivery.AuthDeliveryRoutes()
+
+	router.Use(api.Authorization(iAuthRepo))
+
 	router.Get("/", func(ctx *fiber.Ctx) error {
 		return nil
 	})
 
-	router.Use(limiter.New(limiter.Config{
-		Max:        1,
-		Expiration: 10 * time.Second,
-		KeyGenerator: func(c *fiber.Ctx) string {
-			return c.IP()
-		},
-		LimitReached: func(c *fiber.Ctx) error {
-			return c.SendStatus(fiber.StatusTooManyRequests)
-		},
-		SkipFailedRequests:     false,
-		SkipSuccessfulRequests: false,
-	}))
-
-	iPushNotificationUseCase := api.NewPushNotificationUseCase()
-	pushNotificationDelivery := api.PushNotificationDelivery{Router: router, PushNotificationUseCase: iPushNotificationUseCase}
+	iPushNotificationUseCase := push_notification.NewPushNotificationUseCase()
+	pushNotificationDelivery := push_notification.PushNotificationDelivery{Router: router, PushNotificationUseCase: iPushNotificationUseCase}
 	pushNotificationDelivery.PushNotificationRoutes()
 
 	port := os.Getenv("PORT")
