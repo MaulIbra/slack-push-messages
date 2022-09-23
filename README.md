@@ -30,7 +30,21 @@ if you want to run code on your local machine, follow instruction that explain b
    * Running app with command `go run main.go local`\
 2. With Docker
    * Prerequisite : Docker compose was installed in your local machine
-   * enter to path repository and run `docker-compose -f docker-compose.yaml up -d --build`
+   * enter to path repository and run `docker-compose -f docker-compose.yaml up -d --build`\
+
+## How To Get Slack Token
+* Login To Slack https://app.slack.com/
+* Create workspace or Launch existing workspace
+* after workspace created, In The sidebar click workspace name
+* choose setting & administration -> manage apps
+* click build in navbar -> create new app -> from scratch
+* type app name and select workspace and create app
+* Choose Bots -> review scope to add -> add permission in `bot token scope` -> click `install to workspace`
+* finally you got `Bot User OAuth Token`
+* and for `slack_channel_id` you can click anything channel and see on url, choose last id.
+example: https://app.slack.com/client/T043K8BCR4L/C043GMTC5LK, `C043GMTC5LK` it was channel id 
+
+
 ## ![](https://cdn-icons-png.flaticon.com/24/718/718064.png) **Endpoint**
 Heroku base url : https://slack-push-message.herokuapp.com
 * Get Token\
