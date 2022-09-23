@@ -11,8 +11,12 @@ Simple REST API For push message to channel on slack
 ![](https://badgen.net/badge/github/Fiber/blue?icon=github&link=http://youtube.com&logo=Github)
 ![](https://badgen.net/badge/github/godotenv/cyan?icon=github)
 
+## ![](https://cdn-icons-png.flaticon.com/24/4471/4471714.png) **Deployment**
+![](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+
+
 ## ![](https://cdn-icons-png.flaticon.com/24/610/610363.png) Preparation On Local
-if you want to running code on your local machine, follow instruction that explain below :
+if you want to run code on your local machine, follow instruction that explain below :
 
 Prerequisite : Go was installed in your local machine
 * clone this repository
@@ -22,8 +26,9 @@ Prerequisite : Go was installed in your local machine
 * Running app with command `go run main.go local`
 
 ## ![](https://cdn-icons-png.flaticon.com/24/718/718064.png) **Endpoint**
+Heroku base url : https://slack-push-message.herokuapp.com
 * Send Message\
-Path : `127.0.0.1:8080/send-message`\
+Path : `{{base_url}}/send-message`\
 Method : `POST`\
 Content-Type : `application/json`
     ```yaml
