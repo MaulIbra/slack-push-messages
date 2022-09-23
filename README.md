@@ -24,8 +24,8 @@ if you want to run code on your local machine, follow instruction that explain b
    * clone this repository
    * enter to path repository and run **`go mod tidy`**
    * create .env file and put code below\
-   `PORT=8080`\
-   `SECRET_KEY`\
+   `PORT=8989`\
+   `SECRET_KEY=17c11ae94e6859e0c04daae2f55b0073d2c947294ea38b79280ed0dd514c8454`\
    `EXPIRED_TIME_TOKEN=1` in minutes
    * Running app with command `go run main.go local`\
 2. With Docker
