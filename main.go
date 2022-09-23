@@ -20,6 +20,10 @@ func main() {
 	}
 	router := fiber.New()
 
+	router.Get("/", func(ctx *fiber.Ctx) error {
+		return nil
+	})
+
 	router.Use(limiter.New(limiter.Config{
 		Max:        1,
 		Expiration: 10 * time.Second,
@@ -36,5 +40,5 @@ func main() {
 	iPushNotificationUseCase := api.NewPushNotificationUseCase()
 	pushNotificationDelivery := api.PushNotificationDelivery{Router: router, PushNotificationUseCase: iPushNotificationUseCase}
 	pushNotificationDelivery.PushNotificationRoutes()
-	log.Fatal(router.Listen(api.GetEnv("PORT", ":3000")))
+	log.Fatal(router.Listen(api.GetEnv("PORT", ":80")))
 }
