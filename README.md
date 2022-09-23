@@ -22,7 +22,7 @@ Prerequisite : Go was installed in your local machine
 * clone this repository
 * enter to path repository and run **`go mod tidy`**
 * create .env file and put code below\
-`PORT=:8080`
+`PORT=8080`
 * Running app with command `go run main.go local`
 
 ## ![](https://cdn-icons-png.flaticon.com/24/718/718064.png) **Endpoint**
