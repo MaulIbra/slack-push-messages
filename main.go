@@ -40,5 +40,11 @@ func main() {
 	iPushNotificationUseCase := api.NewPushNotificationUseCase()
 	pushNotificationDelivery := api.PushNotificationDelivery{Router: router, PushNotificationUseCase: iPushNotificationUseCase}
 	pushNotificationDelivery.PushNotificationRoutes()
-	log.Fatal(router.Listen(api.GetEnv("PORT", ":80")))
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = ":5000"
+
+	}
+	log.Fatal(router.Listen(port))
 }
