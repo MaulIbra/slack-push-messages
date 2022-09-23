@@ -27,12 +27,12 @@ if you want to run code on your local machine, follow instruction that explain b
    `PORT=8989`\
    `SECRET_KEY=17c11ae94e6859e0c04daae2f55b0073d2c947294ea38b79280ed0dd514c8454`\
    `EXPIRED_TIME_TOKEN=1` in minutes
-   * Running app with command `go run main.go local`\
+   * Running app with command `go run main.go local`
 2. With Docker
    * Prerequisite : Docker compose was installed in your local machine
    * enter to path repository and run `docker-compose -f docker-compose.yaml up -d --build`\
 
-## How To Get Slack Token
+## ![](https://cdn-icons-png.flaticon.com/24/5562/5562097.png) How To Get Slack Token
 * Login To Slack https://app.slack.com/
 * Create workspace or Launch existing workspace
 * after workspace created, In The sidebar click workspace name
