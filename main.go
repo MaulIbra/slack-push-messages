@@ -20,6 +20,10 @@ func main() {
 	}
 	router := fiber.New()
 
+	router.Get("/", func(ctx *fiber.Ctx) error {
+		return nil
+	})
+
 	router.Use(limiter.New(limiter.Config{
 		Max:        1,
 		Expiration: 10 * time.Second,
