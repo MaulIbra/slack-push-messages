@@ -19,15 +19,18 @@ Simple REST API For push message to channel on slack
 ## ![](https://cdn-icons-png.flaticon.com/24/610/610363.png) Preparation On Local
 if you want to run code on your local machine, follow instruction that explain below :
 
-Prerequisite : Go was installed in your local machine
-* clone this repository
-* enter to path repository and run **`go mod tidy`**
-* create .env file and put code below\
-`PORT=8080`\
-`SECRET_KEY`\
-`EXPIRED_TIME_TOKEN=1` in minutes
-* Running app with command `go run main.go local`
-
+1. Without Docker 
+   * Prerequisite : Go was installed in your local machine
+   * clone this repository
+   * enter to path repository and run **`go mod tidy`**
+   * create .env file and put code below\
+   `PORT=8080`\
+   `SECRET_KEY`\
+   `EXPIRED_TIME_TOKEN=1` in minutes
+   * Running app with command `go run main.go local`\
+2. With Docker
+   * Prerequisite : Docker compose was installed in your local machine
+   * enter to path repository and run `docker-compose -f docker-compose.yaml up -d --build`
 ## ![](https://cdn-icons-png.flaticon.com/24/718/718064.png) **Endpoint**
 Heroku base url : https://slack-push-message.herokuapp.com
 * Get Token\

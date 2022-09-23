@@ -8,7 +8,6 @@ import (
 
 type authRepository struct {
 	jwt          *jwt.Token
-	parse        *jwt.Parser
 	signingKey   []byte
 	expiredToken int
 }

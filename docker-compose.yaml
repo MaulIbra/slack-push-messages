@@ -1,0 +1,19 @@
+version: "1.0"
+
+services:
+  slack_push_notification:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: slack_push_notification
+    restart: on-failure
+    environment:
+      - PORT=8989
+      - SECRET_KEY=17c11ae94e6859e0c04daae2f55b0073d2c947294ea38b79280ed0dd514c8454
+      - EXPIRED_TIME_TOKEN=1
+    ports:
+      - "8989:8989"
+    expose:
+      - "8989"
+
+

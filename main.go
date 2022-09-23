@@ -29,6 +29,10 @@ func main() {
 
 	api.UseRateLimiter(router)
 
+	router.Get("/", func(ctx *fiber.Ctx) error {
+		return nil
+	})
+
 	iAuthRepo := auth.NewAuthRepository(token, mySigningKey, expiredToken)
 	iAuthUseCase := auth.NewAuthUseCase(iAuthRepo)
 	authDelivery := auth.DeliveryAuth{Router: router, AuthUseCase: iAuthUseCase}
@@ -36,18 +40,10 @@ func main() {
 
 	router.Use(api.Authorization(iAuthRepo))
 
-	router.Get("/", func(ctx *fiber.Ctx) error {
-		return nil
-	})
-
 	iPushNotificationUseCase := push_notification.NewPushNotificationUseCase()
 	pushNotificationDelivery := push_notification.PushNotificationDelivery{Router: router, PushNotificationUseCase: iPushNotificationUseCase}
 	pushNotificationDelivery.PushNotificationRoutes()
 
 	port := os.Getenv("PORT")
-	if port == "" {
-		port = "5000"
-
-	}
 	log.Fatal(router.Listen(fmt.Sprintf(":%v", port)))
 }
