@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/MaulIbra/slack-push-messages/api"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/limiter"
@@ -43,8 +44,8 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = ":5000"
+		port = "5000"
 
 	}
-	log.Fatal(router.Listen(port))
+	log.Fatal(router.Listen(fmt.Sprintf(":%v", port)))
 }
