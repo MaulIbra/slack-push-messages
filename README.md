@@ -20,7 +20,9 @@ Prerequisite : Go was installed in your local machine
 * create .env file and put code below
 
     `SLACK_TOKEN=`\
-`SLACK_CHANNEL_ID=`
+`SLACK_CHANNEL_ID=`\
+`PORT=`
+* Running app with command `go run main.go local`
 
 ## ![](https://cdn-icons-png.flaticon.com/24/718/718064.png) **Endpoint**
 * Send Message\
