@@ -8,9 +8,9 @@ Simple REST API For push message to channel on slack
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 
 ## ![](https://cdn-icons-png.flaticon.com/24/4319/4319207.png) **Framework**
-![](https://badgen.net/badge/github/Fiber/blue?icon=github)
-![](https://badgen.net/badge/github/godotenv/cyan?icon=github)
-![](https://badgen.net/badge/github/JWT/black?icon=github)
+[![](https://badgen.net/badge/github/Fiber/blue?icon=github)](https://github.com/gofiber/fiber)
+[![](https://badgen.net/badge/github/godotenv/cyan?icon=github)](https://github.com/joho/godotenv)
+[![](https://badgen.net/badge/github/JWT/black?icon=github)](https://github.com/golang-jwt/jwt)
 
 ## ![](https://cdn-icons-png.flaticon.com/24/4471/4471714.png) **Deployment**
 ![](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
